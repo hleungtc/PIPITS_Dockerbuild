@@ -71,8 +71,6 @@ cd /home/tools/ && \
 wget https://github.com/mothur/mothur/releases/download/v1.39.5/Mothur.linux_64.zip && \
 unzip Mothur.linux_64.zip && \
 sudo mv /home/tools/mothur/ /usr/local/bin/
-#cd /home/tools/mothur/ && \
-#ln -s /home/tools/mothur/mothur /usr/bin/mothur
 
 RUN \
 echo 'deb http://nebc.nerc.ac.uk/bio-linux/ unstable bio-linux' >> /etc/apt/sources.list && \
@@ -130,10 +128,8 @@ wget https://sourceforge.net/projects/pipits/files/warcup_retrained_V2.tar.gz &&
 tar xvfz warcup_retrained_V2.tar.gz
 
 RUN \
-# cd /home/tools/pipits/ITSx_1.0.11/ITSx_db/HMMs && \
 cd /home/tools/ITSx_1.0.11/ITSx_db/HMMs && \
 rm -f *.hmm.* && \
-# echo *.hmm | xargs -n1 hmmpress
 for i in *hmm; do hmmpress $i; done
 
 RUN \
